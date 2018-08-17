@@ -17,15 +17,13 @@ class App extends Component {
           <Link to="/news">News</Link>
           <Link to="/profile">Profile</Link>
         </nav>
-        <article>
-          <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/news" component={NewsContainer} />
-            <Route path="/login" component={LoginContainer} />
-            <PrivateRoute path="/profile" component={ProfileContainer} />
-          </Switch>
-          <LoginButton />
-        </article>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/news" component={NewsContainer} />
+          <Route path="/login" component={LoginContainer} />
+          <PrivateRoute path="/profile" component={ProfileContainer} />
+        </Switch>
+        <LoginButton />
       </div>
     );
   }
