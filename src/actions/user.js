@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { url } from '../constants/api';
 
 const requestUser = () => {
   return {
@@ -24,7 +25,7 @@ const fetchUser = () => {
   return (dispatch, getState) => {
     const { userId } = getState().session;
     dispatch(requestUser());
-    return axios.get('https://mysterious-reef-29460.herokuapp.com/api/v1/user-info/' + userId)
+    return axios.get(`${url}/api/v1/user-info/${userId}`)
       .then(
         response => {
           const { data } = response;

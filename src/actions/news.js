@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { url } from '../constants/api';
 
 const requestNews = () => {
   return {
@@ -23,7 +24,7 @@ const receiveNews = (items) => {
 const fetchNews = () => {
   return dispatch => {
     dispatch(requestNews());
-    return axios.get('https://mysterious-reef-29460.herokuapp.com/api/v1/news')
+    return axios.get(`${url}/api/v1/news`)
       .then(
         response => {
           const { data } = response;

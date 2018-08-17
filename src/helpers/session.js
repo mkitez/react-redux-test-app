@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { url } from '../constants/api';
 
 export const getAuthorizedUser = () => {
   const userId = localStorage.getItem('session');
@@ -6,7 +7,7 @@ export const getAuthorizedUser = () => {
 }
 
 export const credentialsAreValid = (email, password) => {
-  return axios.post('https://mysterious-reef-29460.herokuapp.com/api/v1/validate', { email, password })
+  return axios.post(`${url}/api/v1/validate`, { email, password })
     .then(response => {
       const { data } = response;
       if (data.status === 'ok')
