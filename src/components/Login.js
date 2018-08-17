@@ -11,6 +11,9 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+
+    if (!(this.email.current.value && this.password.current.value))
+      return;
     
     this.props.logIn({
       email: this.email.current.value,
