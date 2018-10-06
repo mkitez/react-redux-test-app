@@ -1,15 +1,16 @@
-import { credentialsAreValid } from '../helpers/session';
+import { credentialsAreValid } from './helpers';
+import * as t from './actionTypes';
 
 export const logIn = ({ email, password }) => {
   return (dispatch, getState) => {
     if (getState().session.isLoading)
       return;
 
-    dispatch({ type: 'LOG_IN' });
+    dispatch({ type: t.LOG_IN });
     credentialsAreValid(email, password)
       .then(userId => {
         dispatch({
-          type: 'LOG_IN_SUCCESS',
+          type: t.LOG_IN_SUCCESS,
           userId
         });
         localStorage.setItem('session', userId);
@@ -17,7 +18,7 @@ export const logIn = ({ email, password }) => {
     )
     .catch(err => {
       dispatch({
-        type: 'LOG_IN_ERROR',
+        type: t.LOG_IN_ERROR,
         error: err.message
       });
     });
@@ -27,6 +28,6 @@ export const logIn = ({ email, password }) => {
 export const logOut = () => {
   localStorage.removeItem('session');
   return {
-    type: 'LOG_OUT'
+    type: t.LOG_OUT
   };
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { errorMessages } from '../constants/errorMessages';
+import { errorMessages } from 'constants/errorMessages';
 
 const ErrorMsg = ({ text }) => {
   const message = errorMessages[text];

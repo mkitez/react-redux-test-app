@@ -1,29 +1,28 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
-import NewsContainer from './containers/NewsContainer';
-import ProfileContainer from './containers/ProfileContainer';
-import LoginContainer from './containers/LoginContainer';
+import News from './pages/News';
+import Profile from './pages/Profile';
+import Login from './pages/Login';
 import Home from './components/Home';
-import PrivateRoute from './containers/PrivateRoute';
-import LoginButton from './components/LoginButton'
+import PrivateRoute from './components/PrivateRoute';
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <nav>
-          <Link to="/">Home</Link>
-          <Link to="/news">News</Link>
-          <Link to="/profile">Profile</Link>
+          <Link to='/'>Home</Link>
+          <Link to='/news'>News</Link>
+          <Link to='/profile'>Profile</Link>
         </nav>
         <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/news" component={NewsContainer} />
-          <Route path="/login" component={LoginContainer} />
-          <PrivateRoute path="/profile" component={ProfileContainer} />
+          <Route path='/' exact component={Home} />
+          <Route path='/news' component={News.components.NewsContainer} />
+          <Route path='/login' component={Login.components.LoginContainer} />
+          <PrivateRoute path='/profile' component={Profile.components.ProfileContainer} />
         </Switch>
-        <LoginButton />
+        <Login.components.LoginButton />
       </div>
     );
   }

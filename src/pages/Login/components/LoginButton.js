@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { logOut } from '../actions/session';
+import { logOut } from '../actions';
 
 const LoginButton = ({ isAuthorized, dispatch }) => {
   if (isAuthorized)

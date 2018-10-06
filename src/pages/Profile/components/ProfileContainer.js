@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Profile from '../components/Profile';
-import { fetchUserIfNeeded } from '../actions/user';
+import Profile from './Profile';
+import { fetchUserIfNeeded } from '../actions';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {

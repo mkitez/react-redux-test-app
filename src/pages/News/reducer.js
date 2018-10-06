@@ -1,27 +1,29 @@
+import * as t from './actionTypes';
+
 const initialState = {
-  data: null,
   isFetching: false,
+  items: [],
   error: ''
 };
 
-const user = (state = initialState, action) => {
+const news = (state = initialState, action) => {
   switch (action.type) {
-    case 'REQUEST_USER':
+    case t.REQUEST_NEWS:
       return {
         ...state,
         isFetching: true,
         error: ''
       };
-    case 'REQUEST_USER_ERROR':
+    case t.REQUEST_NEWS_ERROR:
       return {
         ...state,
         isFetching: false,
         error: action.error
       };
-    case 'RECEIVE_USER':
+    case t.RECEIVE_NEWS:
       return {
         ...state,
-        data: action.data,
+        items: action.items,
         isFetching: false,
         error: ''
       };
@@ -30,4 +32,4 @@ const user = (state = initialState, action) => {
   }
 };
 
-export default user;
+export default news;

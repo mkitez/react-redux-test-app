@@ -1,22 +1,23 @@
 import axios from 'axios';
-import { url } from '../constants/api';
+import { url } from 'constants/api';
+import * as t from './actionTypes';
 
 const requestNews = () => {
   return {
-    type: 'REQUEST_NEWS'
+    type: t.REQUEST_NEWS
   };
 }
 
 const requestNewsError = (error) => {
   return {
-    type: 'REQUEST_NEWS_ERROR',
+    type: t.REQUEST_NEWS_ERROR,
     error
   };
 }
 
 const receiveNews = (items) => {
   return {
-    type: 'RECEIVE_NEWS',
+    type: t.RECEIVE_NEWS,
     items
   };
 }
@@ -24,7 +25,7 @@ const receiveNews = (items) => {
 const fetchNews = () => {
   return dispatch => {
     dispatch(requestNews());
-    return axios.get(`${url}/api/v1/news`)
+    return axios.get(`${url}/news`)
       .then(
         response => {
           const { data } = response;

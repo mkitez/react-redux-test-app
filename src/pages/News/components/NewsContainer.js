@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import News from '../components/News';
-import { fetchNewsIfNeeded } from '../actions/news';
+import News from './News';
+import { fetchNewsIfNeeded } from '../actions';
 
 class NewsContainer extends React.Component {
   componentDidMount() {

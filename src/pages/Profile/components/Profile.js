@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorMsg from './ErrorMsg';
+import ErrorMsg from 'components/ErrorMsg';
 
 const rearrangeLinks = link => {
   return link.label === 'web' ? -1 : 1;
@@ -8,7 +8,8 @@ const rearrangeLinks = link => {
 const Profile = ({ user, error, isFetching }) => {
   if (isFetching)
     return <div>Loading user data...</div>;
-  else if (error)
+  
+  if (error)
     return <ErrorMsg text={error} />;
   else if (user)
     return (

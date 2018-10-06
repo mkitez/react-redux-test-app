@@ -1,22 +1,23 @@
 import axios from 'axios';
-import { url } from '../constants/api';
+import { url } from 'constants/api';
+import * as t from './actionTypes';
 
 const requestUser = () => {
   return {
-    type: 'REQUEST_USER'
+    type: t.REQUEST_USER
   };
 }
 
 const requestUserError = error => {
   return {
-    type: 'REQUEST_USER_ERROR',
+    type: t.REQUEST_USER_ERROR,
     error
   };
 }
 
 const receiveUser = data => {
   return {
-    type: 'RECEIVE_USER',
+    type: t.RECEIVE_USER,
     data
   };
 }
@@ -25,7 +26,7 @@ const fetchUser = () => {
   return (dispatch, getState) => {
     const { userId } = getState().session;
     dispatch(requestUser());
-    return axios.get(`${url}/api/v1/user-info/${userId}`)
+    return axios.get(`${url}/user-info/${userId}`)
       .then(
         response => {
           const { data } = response;

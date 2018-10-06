@@ -1,4 +1,5 @@
-import { getAuthorizedUser } from '../helpers/session';
+import { getAuthorizedUser } from './helpers';
+import * as t from './actionTypes';
 
 const initialState = {
   userId: getAuthorizedUser(),
@@ -8,26 +9,26 @@ const initialState = {
 
 const session = (state = initialState, action) => {
   switch (action.type) {
-    case 'LOG_IN':
+    case t.LOG_IN:
       return {
         ...state,
         isLoading: true,
         error: ''
       };
-    case 'LOG_IN_SUCCESS':
+    case t.LOG_IN_SUCCESS:
       return {
         ...state,
         isLoading: false,
         userId: action.userId,
         error: ''
       };
-    case 'LOG_IN_ERROR':
+    case t.LOG_IN_ERROR:
       return {
         ...state,
         isLoading: false,
         error: action.error
       };
-    case 'LOG_OUT':
+    case t.LOG_OUT:
       return {
         ...state,
         userId: null,

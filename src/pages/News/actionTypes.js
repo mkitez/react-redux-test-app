@@ -1,0 +1,3 @@
+export const REQUEST_NEWS = 'REQUEST_NEWS';
+export const REQUEST_NEWS_ERROR = 'REQUEST_NEWS_ERROR';
+export const RECEIVE_NEWS = 'RECEIVE_NEWS';
