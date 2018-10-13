@@ -12,7 +12,7 @@ const receiveUser = data => {
 export const fetchUser = () => {
   return (dispatch, getState) => {
     const { user, session } = getState();
-    if (user.isFetching)
+    if (user.isFetching || user.data)
       return;
 
     dispatch({

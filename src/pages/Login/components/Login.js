@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ErrorMsg from 'components/ErrorMsg';
 import GoogleLogin from 'react-google-login';
+import { googleClientId } from 'constants/clientIds';
 
 class Login extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class Login extends React.Component {
     return (
       <div>
         <GoogleLogin 
-          clientId='197441299861-7f1p4sh7drtbg46bk5s1i8sgvnbm1ovd.apps.googleusercontent.com'
+          clientId={googleClientId}
           buttonText='Google Login'
           onSuccess={this.props.gAuthSuccess}
           onFailure={this.props.gAuthError}
