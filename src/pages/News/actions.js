@@ -25,17 +25,9 @@ const receiveNews = (items) => {
 const fetchNews = () => {
   return dispatch => {
     dispatch(requestNews());
-    return axios.get(`${url}/news`)
+    return axios.get(`${url}/feeds`)
       .then(
-        response => {
-          const { data } = response;
-          if (data.status === 'ok')
-            dispatch(receiveNews(data.data));
-          else if (data.status === 'err')
-            throw new Error(data.message);
-          else
-            throw new Error('Unspecified error.');
-        },
+        response => dispatch(receiveNews(response.data.feeds)),
         error => dispatch(requestNewsError(error))
       );
   };

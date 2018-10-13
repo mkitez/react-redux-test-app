@@ -1,11 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
-import { fetchUserIfNeeded } from '../actions';
+import { fetchUser } from '../actions';
 
 class ProfileContainer extends React.Component {
   componentDidMount() {
-    this.props.dispatch(fetchUserIfNeeded());
+    this.props.dispatch(fetchUser());
   }
 
   render() {

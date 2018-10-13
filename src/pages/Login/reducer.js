@@ -1,8 +1,9 @@
-import { getAuthorizedUser } from './helpers';
+import { getDataFromStorage } from './helpers';
 import * as t from './actionTypes';
 
 const initialState = {
-  userId: getAuthorizedUser(),
+  data: getDataFromStorage(),
+  user: null,
   isLoading: false,
   error: ''
 };
@@ -19,7 +20,8 @@ const session = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        userId: action.userId,
+        data: action.data,
+        user: action.user,
         error: ''
       };
     case t.LOG_IN_ERROR:
@@ -31,7 +33,8 @@ const session = (state = initialState, action) => {
     case t.LOG_OUT:
       return {
         ...state,
-        userId: null,
+        data: null,
+        user: null,
         isLoading: false,
         error: ''
       };

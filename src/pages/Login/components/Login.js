@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import ErrorMsg from 'components/ErrorMsg';
+import GoogleLogin from 'react-google-login';
 
 class Login extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Login extends React.Component {
     this.password = React.createRef();
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = e => {
     e.preventDefault();
 
     if (!(this.email.current.value && this.password.current.value))
@@ -32,6 +33,15 @@ class Login extends React.Component {
       this.password.current.value = '';
     return (
       <div>
+        <GoogleLogin 
+          clientId='197441299861-7f1p4sh7drtbg46bk5s1i8sgvnbm1ovd.apps.googleusercontent.com'
+          buttonText='Google Login'
+          onSuccess={this.props.gAuthSuccess}
+          onFailure={this.props.gAuthError}
+          onRequest={this.props.gAuth}
+          disabled={isLoading}
+          style={{}}
+        />
         <ErrorMsg text={error} />
         <form onSubmit={this.handleSubmit}>
           <label>

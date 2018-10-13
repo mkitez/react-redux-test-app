@@ -21,6 +21,6 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-const mapStateToProps = state => ({ isAuthorized: state.session.userId });
+const mapStateToProps = state => ({ isAuthorized: state.session.data });
 
 export default connect(mapStateToProps)(PrivateRoute);

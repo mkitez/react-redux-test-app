@@ -12,9 +12,9 @@ const News = ({ data, error, isFetching }) => {
       <div>
         {
           data.map(newsItem => (
-            <div key={newsItem.id}>
+            <div key={newsItem._id}>
               <h2>{newsItem.title}</h2>
-              <p>{newsItem.text}</p>
+              <p>{newsItem.content}</p>
             </div>
           ))
         }

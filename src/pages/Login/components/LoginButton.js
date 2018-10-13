@@ -11,6 +11,6 @@ const LoginButton = ({ isAuthorized, dispatch }) => {
     return null;
 }
 
-const mapStateToProps = state => ({ isAuthorized: state.session.userId });
+const mapStateToProps = state => ({ isAuthorized: state.session.data });
 
 export default connect(mapStateToProps)(LoginButton);
