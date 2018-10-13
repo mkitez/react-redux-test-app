@@ -27,6 +27,8 @@ const user = (state = initialState, action) => {
         isFetching: false,
         error: ''
       };
+    case t.CLEAR_USER:
+      return initialState;
     default:
       return state;
   }

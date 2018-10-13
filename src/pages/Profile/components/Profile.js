@@ -8,7 +8,7 @@ const Profile = ({ user, error, isFetching }) => {
   if (error)
     return <ErrorMsg text={error} />;
 
-  return user? <div>Hello {user.displayName}!</div> : null;
+  return user? <div>Hello {user.username}!</div> : null;
 }
 
 export default Profile;
