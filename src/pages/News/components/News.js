@@ -1,6 +1,7 @@
 import React from 'react';
+import NewsItemBrief from './NewsItemBrief';
 
-const News = ({ data, error, isFetching }) => {
+const News = ({ data, error, isFetching, isAuthorized }) => {
   if (isFetching)
     return <div>Loading news...</div>;
 
@@ -12,19 +13,18 @@ const News = ({ data, error, isFetching }) => {
       <div>
         {
           data.map(newsItem => (
-            <div key={newsItem._id}>
-              <h2>{newsItem.title}</h2>
-              <p>{newsItem.content}</p>
-            </div>
-          ))
+            <NewsItemBrief
+              key={newsItem._id}
+              data={newsItem}
+            />
+            )
+          )
         }
         <p>Total news items: {data.length}</p>
       </div>
     );
   else
-    return (
-      <div>There are no news yet...</div>
-    );
+    return <div>There are no news yet.</div>;
 }
 
 export default News;

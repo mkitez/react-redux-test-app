@@ -1,5 +1,4 @@
 import { credentialsLogIn, googleTokenLogIn } from './helpers';
-import * as jwt_decode from 'jwt-decode';
 import * as loginActions from './actionTypes';
 import * as profileActions from 'pages/Profile/actionTypes';
 
@@ -11,22 +10,18 @@ export const logIn = ({ email, password }) => {
     dispatch({ type: loginActions.LOG_IN });
     credentialsLogIn(email, password)
       .then(response => {
-        const { user, token } = response.data;
-        localStorage.setItem('id_token', token);
-        dispatch({
-          type: profileActions.RECEIVE_USER,
-          data: user
-        });
+        const { token } = response.data;
         dispatch({
           type: loginActions.LOG_IN_SUCCESS,
-          data: jwt_decode(token),
+          token
         });
+        localStorage.setItem('id_token', token);
       }
     )
-    .catch(err => {
+    .catch(error => {
       dispatch({
         type: loginActions.LOG_IN_ERROR,
-        error: err.error.response.data
+        error: error.response.data.error
       });
     });
   }; 
@@ -47,16 +42,12 @@ export const gAuthSuccess = profile => {
   return dispatch => {
     googleTokenLogIn(profile.tokenId)
       .then(response => {
-        const { user, token } = response.data;
-        localStorage.setItem('id_token', token);
-        dispatch({
-          type: profileActions.RECEIVE_USER,
-          data: user
-        });
+        const { token } = response.data;
         dispatch({
           type: loginActions.LOG_IN_SUCCESS,
-          data: jwt_decode(token),
+          token
         });
+        localStorage.setItem('id_token', token);
       });
   };
 }

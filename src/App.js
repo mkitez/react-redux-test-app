@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link, Route, Switch } from 'react-router-dom';
 import News from './pages/News';
+import NewsItem from './pages/NewsItem';
 import Profile from './pages/Profile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -20,7 +21,10 @@ class App extends Component {
         </nav>
         <Switch>
           <Route path='/' exact component={Home} />
-          <Route path='/news' component={News.components.NewsContainer} />
+          <Route path='/news' exact component={News.components.NewsContainer} />
+          <PrivateRoute path='/news/add' component={NewsItem.components.NewsItemEditorContainer} />
+          <Route path='/news/:id' exact component={NewsItem.components.NewsItemContainer} />
+          <PrivateRoute path='/news/:id/edit' exact component={NewsItem.components.NewsItemEditorContainer} />
           <Route path='/login' component={Login.components.LoginContainer} />
           <Route path='/signup' component={Signup.components.SignupContainer} />
           <PrivateRoute path='/profile' component={Profile.components.ProfileContainer} />

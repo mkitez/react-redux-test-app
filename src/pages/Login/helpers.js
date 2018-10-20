@@ -7,7 +7,10 @@ export const getDataFromStorage = () => {
   if (!token)
     return null;
 
-  return jwt_decode(token);
+  return {
+    ...jwt_decode(token),
+    token
+  };
 }
 
 export const credentialsLogIn = (username, password) => {
@@ -20,5 +23,5 @@ export const credentialsLogIn = (username, password) => {
 export const googleTokenLogIn = token => {
   const params = new URLSearchParams();
   params.append('token', token);
-  return axios.post(`${url}/auth/googletoken`, params);
+  return axios.post(`${url}/auth/google`, params);
 }

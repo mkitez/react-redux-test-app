@@ -1,3 +1,4 @@
+import * as jwt_decode from 'jwt-decode';
 import { getDataFromStorage } from './helpers';
 import * as t from './actionTypes';
 
@@ -19,7 +20,10 @@ const session = (state = initialState, action) => {
       return {
         ...state,
         isLoading: false,
-        data: action.data,
+        data: {
+          ...jwt_decode(action.token),
+          token: action.token
+        },
         error: ''
       };
     case t.LOG_IN_ERROR:
