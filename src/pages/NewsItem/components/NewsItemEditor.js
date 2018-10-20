@@ -33,7 +33,7 @@ class NewsItemEditor extends React.Component {
 
     this.props.onSubmit(
       this.state.title,
-      this.state.content,
+      this.state.content
     );
   }
 

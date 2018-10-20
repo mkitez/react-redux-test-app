@@ -1,4 +1,5 @@
 import NewsItemContainer from './NewsItemContainer';
-import NewsItemEditorContainer from './NewsItemEditorContainer';
+import AddNewsItemContainer from './AddNewsItemContainer';
+import EditNewsItemContainer from './EditNewsItemContainer';
 
-export { NewsItemContainer, NewsItemEditorContainer };
+export { NewsItemContainer, AddNewsItemContainer, EditNewsItemContainer };

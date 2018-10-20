@@ -2,9 +2,9 @@ import React from 'react';
 import { Redirect } from 'react-router';
 import { connect } from 'react-redux';
 import NewsItemEditor from './NewsItemEditor';
-import { getItem, addItem, updateItem } from '../actions';
+import { getItem, updateItem } from '../actions';
 
-class NewsItemEdtorContainer extends React.Component {
+class EditNewsItemContainer extends React.Component {
   componentDidMount() {
     this.props.loadData();
   }
@@ -26,22 +26,21 @@ class NewsItemEdtorContainer extends React.Component {
   }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-  data: ownProps.match.params.id ? state.newsItem.data : null,
+const mapStateToProps = state => ({
+  data: state.newsItem.data,
   error: state.newsItem.error,
   isLoading: state.newsItem.isLoading,
   userId: state.session.data ? state.session.data.id : null
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const cb = () => ownProps.history.push('/news');
-  const newsItemId = ownProps.match.params.id;
+  const { id } = ownProps.match.params;
   return {
-    loadData: () => newsItemId ? dispatch(getItem(newsItemId)) : null,
-    onSubmit: (title, content) => newsItemId ?
-      dispatch(updateItem(newsItemId, title, content, cb)) : 
-      dispatch(addItem(title, content, cb))
+    loadData: () => dispatch(getItem(id)),
+    onSubmit: (title, content) => dispatch(
+      updateItem(id, title, content, () => ownProps.history.push(`/news/${id}`))
+    )
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewsItemEdtorContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(EditNewsItemContainer);

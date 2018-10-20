@@ -41,7 +41,7 @@ export const addItem = (title, content, cb) => {
           type: t.NEWS_ITEM_ACTION_SUCCESS,
           data
         });
-        cb();
+        cb(data._id);
       })
       .catch(error => dispatch({
           type: t.NEWS_ITEM_ACTION_ERROR,

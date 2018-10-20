@@ -22,9 +22,9 @@ class App extends Component {
         <Switch>
           <Route path='/' exact component={Home} />
           <Route path='/news' exact component={News.components.NewsContainer} />
-          <PrivateRoute path='/news/add' component={NewsItem.components.NewsItemEditorContainer} />
+          <PrivateRoute path='/news/add' component={NewsItem.components.AddNewsItemContainer} />
           <Route path='/news/:id' exact component={NewsItem.components.NewsItemContainer} />
-          <PrivateRoute path='/news/:id/edit' exact component={NewsItem.components.NewsItemEditorContainer} />
+          <PrivateRoute path='/news/:id/edit' exact component={NewsItem.components.EditNewsItemContainer} />
           <Route path='/login' component={Login.components.LoginContainer} />
           <Route path='/signup' component={Signup.components.SignupContainer} />
           <PrivateRoute path='/profile' component={Profile.components.ProfileContainer} />
