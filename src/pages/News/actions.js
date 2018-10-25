@@ -19,7 +19,7 @@ export const fetchNews = () => {
         }),
         error => dispatch({
           type: t.REQUEST_NEWS_ERROR,
-          error
+          error: error.response.data.error
         })
     );
   };

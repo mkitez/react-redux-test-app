@@ -22,5 +22,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "@types/react-redux": "^6.0.9",
+    "@types/react-router": "^4.0.32",
+    "@types/react-router-dom": "^4.3.1"
   }
 }

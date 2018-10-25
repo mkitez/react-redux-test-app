@@ -39,15 +39,15 @@ class NewsItemEditor extends React.Component {
 
   render() {
     const { error, isLoading } = this.props;
-    if (error)
-      return <ErrorMsg text={error} />;
-
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input type='text' name='title' value={this.state.title} onChange={this.handleChange} />
-        <textarea name='content' value={this.state.content} onChange={this.handleChange} />
-        <input type='submit' value={isLoading ? 'Loading...' : 'Submit'} disabled={isLoading} />
-      </form>
+      <div>
+        <ErrorMsg text={error} />
+        <form onSubmit={this.handleSubmit}>
+          <input type='text' name='title' value={this.state.title} onChange={this.handleChange} disabled={isLoading} />
+          <textarea name='content' value={this.state.content} onChange={this.handleChange} disabled={isLoading} />
+          <input type='submit' value={isLoading ? 'Loading...' : 'Submit'} disabled={isLoading} />
+        </form>
+      </div>
     );
   }
 }

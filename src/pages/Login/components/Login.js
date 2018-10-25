@@ -30,7 +30,7 @@ class Login extends React.Component {
     if (loginSuccessful)
       return <Redirect to={from} />
     
-    if (error)
+    if (error && this.password.current)
       this.password.current.value = '';
     return (
       <div>

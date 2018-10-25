@@ -18,8 +18,7 @@ class AddNewsItemContainer extends React.Component {
 
 const mapStateToProps = state => ({
   error: state.newsItem.error,
-  isLoading: state.newsItem.isLoading,
-  data: state.newsItem.data
+  isLoading: state.newsItem.isLoading
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

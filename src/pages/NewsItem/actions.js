@@ -19,7 +19,7 @@ export const getItem = id => {
       )
       .catch(error => dispatch({
           type: t.NEWS_ITEM_ACTION_ERROR,
-          error
+          error: error.message
         })
       );
   };
@@ -45,7 +45,7 @@ export const addItem = (title, content, cb) => {
       })
       .catch(error => dispatch({
           type: t.NEWS_ITEM_ACTION_ERROR,
-          error
+          error: error.message
         })
       );
   };
@@ -71,7 +71,7 @@ export const updateItem = (id, title, content, cb) => {
       })
       .catch(error => dispatch({
           type: t.NEWS_ITEM_ACTION_ERROR,
-          error
+          error: error.message
         })
       );
   };
@@ -97,7 +97,7 @@ export const deleteItem = (id, cb) => {
       })
       .catch(error => dispatch({
           type: t.NEWS_ITEM_ACTION_ERROR,
-          error
+          error: error.message
         })
       );
   };

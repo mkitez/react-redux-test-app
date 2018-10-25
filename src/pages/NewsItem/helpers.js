@@ -4,7 +4,7 @@ import { url } from 'constants/api';
 export const getNewsItem = id => {
   return axios.get(`${url}/feeds/${id}`)
     .then(response => response.data.feed)
-    .catch(error => error.response.data.error);
+    .catch(error => { throw new Error(error.response.data.error); });
 };
 
 export const addNewsItem = (data, token) => {
@@ -15,7 +15,7 @@ export const addNewsItem = (data, token) => {
   };
   return axios.post(`${url}/feeds`, data, requestParams)
     .then(response => response.data.feed)
-    .catch(error => error.response.data.error);
+    .catch(error => { throw new Error(error.response.data.error); });
 };
 
 export const updateNewsItem = (id, data, token) => {
@@ -26,7 +26,7 @@ export const updateNewsItem = (id, data, token) => {
   };
   return axios.put(`${url}/feeds/${id}`, data, requestParams)
     .then(response => response.data.feed)
-    .catch(error => error.response.data.error);
+    .catch(error => { throw new Error(error.response.data.error); });
 };
 
 export const deleteNewsItem = (id, token) => {
@@ -37,5 +37,5 @@ export const deleteNewsItem = (id, token) => {
   };
   return axios.delete(`${url}/feeds/${id}`, requestParams)
     .then(response => response.data._id)
-    .catch(error => error.response.data.error);
+    .catch(error => { throw new Error(error.response.data.error); });
 };

@@ -19,7 +19,7 @@ export const fetchUser = () => {
         }),
         error => dispatch({
           type: t.REQUEST_USER_ERROR,
-          error
+          error: error.message
         })
     );
   };

@@ -21,10 +21,10 @@ export const signUp = ({ email, password, captcha }) => {
         localStorage.setItem('id_token', token);
       }
     )
-    .catch(err => {
+    .catch(error => {
       dispatch({
         type: signupActions.SIGNUP_ERROR,
-        error: err.error
+        error: error.response.data.error
       });
     });
   }; 

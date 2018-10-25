@@ -9,5 +9,5 @@ export const getUser = (userId, token) => {
   };
   return axios.get(`${url}/users/${userId}`, requestParams)
     .then(response => response.data.user)
-    .catch(error => error.response.data.error);
+    .catch(error => { throw new Error(error.response.data.error); });
 }
